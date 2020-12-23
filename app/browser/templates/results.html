@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <style>
+        html {
+  background-color: rgba(37, 38, 38, 0.78);
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.container {
+    padding-top: 75px;
+    display: flex;
+    flex-wrap: wrap;
+    width: available;
+}
+
+.card-media {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  height: 250px;
+  width: calc(20% - 40px);
+}
+
+.poster {
+  height: 200px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, .3);
+  margin-top: -25px;
+}
+
+.fav-button {
+    background: #27ae60;
+    color: white;
+    height: 20px;
+    width: auto;
+}
+    </style>
+</head>
+<body>
+<div class="navbar">
+    <div>-->
+        <a href="{% url 'logout' %}">Logout</a>
+    </div>
+          <div>-->
+        <a href="{% url 'favourite' %}">Favourites</a>
+    </div>
+    <div>
+        <form method="GET" action="">
+            {% csrf_token %}
+                <input name="s" type="text" placeholder="Enter movie title..." onkeydown="if (event.keyCode === 13) { this.form.submit(); return false; }">
+        </form>
+    </div>
+    <div>
+        {% for page in pages %}
+        {% if current_page == page %}
+            > {{ page }} <
+          {% else %}
+            <a href="?{{query_params}}&page={{ page }}">{{ page }}</a>
+          {% endif %}
+        {% endfor %}
+    </div>
+</div>
+    <form class="container" method="POST" action="/favourite/">
+        {% csrf_token %}
+        {% for movie in movies %}
+            <div class="card-media">
+              <img src="{{movie.Poster}}" alt="" class="poster">
+              <button class="fav-button" type="submit" name="FavMovie" value="{{movie}}">Add to favourites</button>
+             </div>
+    {% endfor %}
+    </form>
+
+
+
+</body>
+</html>
