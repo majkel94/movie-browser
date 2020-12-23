@@ -9,4 +9,9 @@ Obtain [API key](http://www.omdbapi.com/apikey.aspx) and paste it into `dev.env`
 To start project run
 
     docker-compose up 
-After successful build app will be availble on `localhost:8000` and `dev:dev` supersuer account will be crated.
+After successful :crossed_fingers: build app will be available on `localhost:8000` and `dev:dev` superuser account will be crated.
+
+
+### Where are the tests and error handling?
+
+They were never there ...
