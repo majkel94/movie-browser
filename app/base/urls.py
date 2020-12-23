@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+import browser.views
 import users.views
 
 urlpatterns = [
@@ -24,4 +25,6 @@ urlpatterns = [
     path("login/", users.views.login_user, name="login"),
     path("logout/", users.views.logout_user, name="logout"),
     path("signup/", users.views.sign_up, name="sign_up"),
+    path("search/", browser.views.omdb_search, name="search"),
+    path("favourite/", browser.views.favourites, name="favourite"),
 ]

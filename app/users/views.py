@@ -29,7 +29,8 @@ def login_user(request):
 
         if user:
             login(request, user)
-            return redirect("home")
+            to = request.POST.get('next', 'home')
+            return redirect(to)
         else:
             messages.error(request, "Invalid credentials!")
 
@@ -46,5 +47,4 @@ def logout_user(request):
 
 @login_required(login_url="login")
 def home(request):
-    context = {"user": request.user}
-    return render(request, "home.html")
+    return redirect('search')

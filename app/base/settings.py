@@ -21,10 +21,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "plm5z&-4s6k+pe^v(r@weg1mbh@+0-%v(-fkt#56ale1lni(@0"
+SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = bool(int(os.getenv("DEBUG")))
 
 ALLOWED_HOSTS = []
 
@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
 ]
 
-PROJECT_APPS = ["users"]
+PROJECT_APPS = ["users", "browser"]
 
 INSTALLED_APPS += PROJECT_APPS
 
@@ -117,3 +117,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = "/static/"
+
+
+OMDB_API_SETTINGS = {
+    "OMDB_API_URL": os.getenv("OMDB_API_URL"),
+    "OMDB_API_KEY": os.getenv("OMDB_API_KEY"),
+    "OMDB_API_PAGE_SIZE": int(os.getenv("OMDB_API_PAGE_SIZE")),
+}
