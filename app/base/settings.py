@@ -40,7 +40,10 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
 ]
 
-PROJECT_APPS = ["users"]
+PROJECT_APPS = [
+    "users",
+    "browser",
+]
 
 INSTALLED_APPS += PROJECT_APPS
 
