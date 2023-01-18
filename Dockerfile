@@ -17,4 +17,4 @@ RUN chmod +x /app/scripts
 RUN useradd -ms /bin/bash dev
 USER dev
 
-
+EXPOSE 8000
